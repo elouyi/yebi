@@ -26,4 +26,6 @@ pluginManagement {
         kotlin("plugin.serialization") version version("kotlinCompiler")
     }
 }
-include("yebi-core")
+
+include(":yebi-core")
+include(":features:yebi-live")
