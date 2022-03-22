@@ -7,7 +7,7 @@ import kotlin.coroutines.EmptyCoroutineContext
 /**
  * 事件系统, 由 [subscribe] 订阅事件, [invoke] 触发事件, todo
  */
-public interface IEvent<T, out R : Any?, out J : Any?> {
+public interface IEvent<T, out R : Any?, out Listener : EventListener<T>> {
 
     /**
      * 订阅事件
@@ -18,7 +18,7 @@ public interface IEvent<T, out R : Any?, out J : Any?> {
         context: CoroutineContext = EmptyCoroutineContext,
         priority: EventPriority = EventPriority.NORMAL,
         handler: EventHandler<R, T>
-    ): J
+    ): Listener
 
     /**
      * 触发事件
@@ -30,7 +30,7 @@ public interface IEvent<T, out R : Any?, out J : Any?> {
 
     public operator fun plus(
         handler: EventHandler<R, T>
-    ): J = subscribe(handler = handler)
+    ): Listener = subscribe(handler = handler)
 
     public operator fun plusAssign(
         handler: EventHandler<R, T>

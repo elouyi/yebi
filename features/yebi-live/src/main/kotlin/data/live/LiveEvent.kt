@@ -64,7 +64,7 @@ public class UnknownCMD internal constructor(
 ) : UnknownEvent(data), LiveEvent.CMD
 
 public data class RoomRealTimeMessageUpdate(
-    override val cmd: String,
+    override val cmd: String, // ROOM_REAL_TIME_MESSAGE_UPDATE
     val data: RoomRealTimeMessageUpdate.Data
 ) : LiveEvent, LiveEvent.CMD {
     @Serializable

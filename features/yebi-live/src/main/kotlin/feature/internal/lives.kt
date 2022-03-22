@@ -48,6 +48,7 @@ internal fun parseLiveEvent(data: ByteArray): LiveEvent {
  * @return 人气
  */
 @OptIn(ExperimentalUnsignedTypes::class)
+@Deprecated("")
 internal fun parseHeartbeat(data: ByteArray): Heartbeat {
     // require(data[0x03] <= 0x14) { "not a single heartbeat" }
     require(data[0x0b].toInt() == 3) { "not a heartbeat" }
@@ -63,6 +64,49 @@ internal fun parseSingleNormalPack(data: ByteArray): LiveEvent.CMD {
         LiveCMD.roomRealTimeMessageUpdate -> Json.decodeFromString<RoomRealTimeMessageUpdate>(body)
         else -> UnknownCMD(cmd, data)
     }
+}
+
+/**
+ * 头部格式
+ * @property totalSize 封包总大小
+ * @property headSize 头部大小
+ * @property pv 协议版本
+ *
+ * 0普通包正文不使用压缩
+ *
+ * 1心跳及认证包正文不使用压缩
+ *
+ * 2普通包正文使用zlib压缩
+ *
+ * 3普通包正文使用brotli压缩,解压为一个带头部的协议0普通包
+ * @property opCode 操作码
+ *
+ * 2 心跳包
+ *
+ * 3 心跳包回复
+ *
+ * 5 普通包（cmd）
+ *
+ * 7 认证包
+ *
+ * 8 认证包回复
+ */
+internal class LiveEventHead(
+    val totalSize: Int, // uint offset 0, size 4
+    val headSize: Int = 0x10, // offset4 size 2
+    val pv: Int, // offset 6, size 2
+    val opCode: Int, // offset 8, size 4
+    val sequence: Int // offset 12, size 4
+)
+
+internal fun ByteReadPacket.readHead(): LiveEventHead {
+    return LiveEventHead(
+        totalSize = this.readInt(),
+        headSize = this.readShort().toInt(),
+        pv = this.readShort().toInt(),
+        opCode = this.readInt(),
+        sequence = this.readInt()
+    )
 }
 
 internal fun headHexString(data: ByteArray): String {

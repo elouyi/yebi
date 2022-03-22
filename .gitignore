@@ -15,5 +15,6 @@ gradle-app.setting
 
 /buildSrc/.gradle/
 /buildSrc/build/
+/features/*/build/
 
 /yebi-core/build/
