@@ -4,14 +4,14 @@ import com.elouyi.yebi.feature.Attributes
 import com.elouyi.yebi.utils.newClient
 import io.ktor.client.*
 
-public fun Yebi(
+public fun YebiBot(
     block: YebiConfig.() -> Unit = {}
-): Yebi {
+): YebiBot {
     val config = YebiConfig().apply(block)
-    return Yebi(newClient(), config)
+    return YebiBot(newClient(), config)
 }
 
-public class Yebi(
+public class YebiBot(
     public val client: HttpClient,
     internal val config: YebiConfig = YebiConfig()
 ) {

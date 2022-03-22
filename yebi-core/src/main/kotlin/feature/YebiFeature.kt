@@ -1,6 +1,6 @@
 package com.elouyi.yebi.feature
 
-import com.elouyi.yebi.Yebi
+import com.elouyi.yebi.YebiBot
 
 public interface YebiFeature<out TConfig : Any, TFeature : Any> {
 
@@ -8,6 +8,6 @@ public interface YebiFeature<out TConfig : Any, TFeature : Any> {
 
     public fun prepare(block: TConfig.() -> Unit = {}): TFeature
 
-    public fun install(feature: TFeature, scope: Yebi)
+    public fun install(feature: TFeature, scope: YebiBot)
 
 }

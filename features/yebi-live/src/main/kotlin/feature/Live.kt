@@ -1,10 +1,10 @@
 package com.elouyi.yebi.feature
 
-import com.elouyi.yebi.Yebi
+import com.elouyi.yebi.YebiBot
 
 public class Live internal constructor(internal val config: Config) {
 
-    private lateinit var scope: Yebi
+    private lateinit var scope: YebiBot
 
     internal lateinit var liveAPI: LiveAPI
 
@@ -21,7 +21,7 @@ public class Live internal constructor(internal val config: Config) {
             return Live(config)
         }
 
-        override fun install(feature: Live, scope: Yebi) {
+        override fun install(feature: Live, scope: YebiBot) {
             feature.scope = scope
             feature.liveAPI = LiveAPI[scope]
         }

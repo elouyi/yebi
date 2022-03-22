@@ -5,7 +5,7 @@ import com.elouyi.yebi.feature.YebiFeature
 
 public class YebiConfig {
 
-    private val features: MutableMap<AttributeKey<*>, (Yebi) -> Unit> = mutableMapOf()
+    private val features: MutableMap<AttributeKey<*>, (YebiBot) -> Unit> = mutableMapOf()
     private val featureConfigurations: MutableMap<AttributeKey<*>, Any.() -> Unit> = mutableMapOf()
 
     public fun <TBuilder : Any, TFeature : Any> install(
@@ -29,8 +29,8 @@ public class YebiConfig {
         }
     }
 
-    public fun install(yebi: Yebi) {
-        features.values.forEach { yebi.apply(it) }
+    public fun install(yebiBot: YebiBot) {
+        features.values.forEach { yebiBot.apply(it) }
     }
 
     override fun toString(): String {
