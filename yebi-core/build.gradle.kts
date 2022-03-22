@@ -30,7 +30,17 @@ kotlin {
                 api("io.ktor:ktor-client-core:${Versions.ktor}")
                 api("io.ktor:ktor-client-cio:${Versions.ktor}")
                 api("io.ktor:ktor-client-serialization:${Versions.ktor}")
+                // api("io.github.microutils:kotlin-logging:${Versions.logging}")
             }
         }
+    }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs += listOf(
+            "-Xopt-in=kotlin.RequiresOptIn"
+        )
+        jvmTarget = "11"
     }
 }

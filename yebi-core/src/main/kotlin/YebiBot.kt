@@ -1,19 +1,22 @@
 package com.elouyi.yebi
 
+import com.elouyi.yebi.engine.YebiEngine
+import com.elouyi.yebi.engine.YebiEngineConfig
+import com.elouyi.yebi.engine.YebiEngineFactory
+import com.elouyi.yebi.engine.web.internal.YebiWebEngine
 import com.elouyi.yebi.feature.Attributes
-import com.elouyi.yebi.utils.newClient
-import io.ktor.client.*
 
-public fun YebiBot(
-    block: YebiConfig.() -> Unit = {}
+public fun <T : YebiEngineConfig> YebiBot(
+    engineFactory: YebiEngineFactory<T>,
+    block: YebiConfig<T>.() -> Unit = {}
 ): YebiBot {
-    val config = YebiConfig().apply(block)
-    return YebiBot(newClient(), config)
+    val config = YebiConfig<T>().apply(block)
+    return YebiBot(engineFactory.create(), config)
 }
 
 public class YebiBot(
-    public val client: HttpClient,
-    internal val config: YebiConfig = YebiConfig()
+    public val engine: YebiEngine,
+    internal val config: YebiConfig<out YebiEngineConfig> = YebiConfig()
 ) {
 
     public val attributes: Attributes = Attributes()
@@ -25,5 +28,13 @@ public class YebiBot(
 
     override fun toString(): String {
         return "config: $config"
+    }
+}
+
+public suspend fun YebiBot.login() {
+    when(engine) {
+        is YebiWebEngine -> {}
+
+        else -> {}
     }
 }

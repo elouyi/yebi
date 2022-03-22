@@ -1,12 +1,23 @@
 package com.elouyi.yebi
 
+import com.elouyi.yebi.engine.YebiEngineConfig
 import com.elouyi.yebi.feature.AttributeKey
 import com.elouyi.yebi.feature.YebiFeature
 
-public class YebiConfig {
+public class YebiConfig<T : YebiEngineConfig> {
 
     private val features: MutableMap<AttributeKey<*>, (YebiBot) -> Unit> = mutableMapOf()
     private val featureConfigurations: MutableMap<AttributeKey<*>, Any.() -> Unit> = mutableMapOf()
+
+    internal var engineConfig: T.() -> Unit = {}
+
+    public fun engine(block: T.() -> Unit) {
+        val old = engineConfig
+        engineConfig = {
+            old()
+            block()
+        }
+    }
 
     public fun <TBuilder : Any, TFeature : Any> install(
         feature: YebiFeature<TBuilder, TFeature>,

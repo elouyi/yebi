@@ -1,5 +1,6 @@
 package com.elouyi.yebi.event
 
+import com.elouyi.yebi.utils.YebiExperimental
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
@@ -7,6 +8,7 @@ import kotlin.coroutines.EmptyCoroutineContext
 /**
  * 事件系统, 由 [subscribe] 订阅事件, [invoke] 触发事件, todo
  */
+@YebiExperimental
 public interface IEvent<T, out R : Any?, out Listener : EventListener<T>> {
 
     /**

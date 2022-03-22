@@ -8,4 +8,6 @@ object Versions {
     const val kotlinxAtomicfu = "0.17.0"
     const val kotlinxIO = "0.1.1"
     const val ktor = "1.6.5"
+
+    const val logging = "2.1.20"
 }

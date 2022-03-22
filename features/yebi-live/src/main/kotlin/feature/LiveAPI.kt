@@ -3,6 +3,7 @@ package com.elouyi.yebi.feature
 import com.elouyi.yebi.YebiBot
 import com.elouyi.yebi.data.live.LiveEvent
 import com.elouyi.yebi.utils.Cancelable
+import com.elouyi.yebi.utils.YebiExperimental
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
@@ -14,6 +15,7 @@ public interface LiveAPI {
     /**
      * 订阅直播间信息
      */
+    @YebiExperimental
     public fun <E : LiveEvent> subscribeLiveEvent(
         roomId: Int,
         context: CoroutineContext = EmptyCoroutineContext,
