@@ -11,7 +11,7 @@ public class YebiWebEngine(
 ) : YebiEngineBase("YebiEngine-Web") {
 
     override val coroutineContext: CoroutineContext
-        get() = TODO("Not yet implemented")
+        get() = super.coroutineContext
 
     override val uid: Long
         get() = TODO()

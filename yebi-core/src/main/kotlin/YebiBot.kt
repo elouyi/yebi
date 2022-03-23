@@ -3,7 +3,6 @@ package com.elouyi.yebi
 import com.elouyi.yebi.engine.YebiEngine
 import com.elouyi.yebi.engine.YebiEngineConfig
 import com.elouyi.yebi.engine.YebiEngineFactory
-import com.elouyi.yebi.engine.web.internal.YebiWebEngine
 import com.elouyi.yebi.feature.Attributes
 
 public fun <T : YebiEngineConfig> YebiBot(
@@ -24,17 +23,10 @@ public class YebiBot(
 
     init {
         config.install(this)
+        engine.install(this)
     }
 
     override fun toString(): String {
         return "config: $config"
-    }
-}
-
-public suspend fun YebiBot.login() {
-    when(engine) {
-        is YebiWebEngine -> {}
-
-        else -> {}
     }
 }

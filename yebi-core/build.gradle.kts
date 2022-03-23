@@ -5,6 +5,7 @@ plugins {
 }
 
 apply(from = rootProject.file("gradle/yebi-common.gradle"))
+apply(from = rootProject.file("gradle/publishing.gradle"))
 
 kotlin {
 
@@ -34,6 +35,8 @@ kotlin {
         }
     }
 }
+
+mavenPublish()
 
 /*
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {

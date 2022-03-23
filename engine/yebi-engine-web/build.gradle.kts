@@ -1,9 +1,11 @@
+import com.elouyi.build.mavenPublish
 
 plugins {
     kotlin("jvm")
 }
 
 apply(from = rootProject.file("gradle/yebi-common.gradle"))
+apply(from = rootProject.file("gradle/publishing.gradle"))
 
 kotlin {
     sourceSets {
@@ -14,3 +16,5 @@ kotlin {
         }
     }
 }
+
+mavenPublish()

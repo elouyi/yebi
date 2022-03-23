@@ -1,8 +1,11 @@
+import com.elouyi.build.mavenPublish
 
 plugins {
     kotlin("jvm")
     kotlin("plugin.serialization")
 }
+
+apply(from = rootProject.file("gradle/publishing.gradle"))
 
 kotlin {
 
@@ -28,3 +31,5 @@ kotlin {
         }
     }
 }
+
+mavenPublish()
