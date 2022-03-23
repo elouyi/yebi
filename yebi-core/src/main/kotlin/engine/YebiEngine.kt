@@ -20,4 +20,7 @@ public interface YebiEngine : CoroutineScope, Closeable {
 
 public abstract class YebiEngineBase(private val engineName: String) : YebiEngine {
 
+    override fun toString(): String {
+        return engineName
+    }
 }

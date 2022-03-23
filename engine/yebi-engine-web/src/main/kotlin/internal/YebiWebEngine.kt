@@ -1,14 +1,14 @@
 package com.elouyi.yebi.engine.web.internal
 
 import com.elouyi.yebi.YebiBot
-import com.elouyi.yebi.engine.web.YWEngineConfig
 import com.elouyi.yebi.engine.YebiEngineBase
+import com.elouyi.yebi.engine.web.WebEngineConfig
 import io.ktor.client.request.*
 import kotlin.coroutines.CoroutineContext
 
 public class YebiWebEngine(
-    override val config: YWEngineConfig
-) : YebiEngineBase("WebEngine") {
+    override val config: WebEngineConfig
+) : YebiEngineBase("YebiEngine-Web") {
 
     override val coroutineContext: CoroutineContext
         get() = TODO("Not yet implemented")

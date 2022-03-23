@@ -2,12 +2,11 @@ import com.elouyi.build.*
 
 plugins {
     kotlin("jvm")
-    kotlin("plugin.serialization")
 }
 
-kotlin {
+apply(from = rootProject.file("gradle/yebi-common.gradle"))
 
-    explicitApi()
+kotlin {
 
     sourceSets {
 
@@ -36,6 +35,7 @@ kotlin {
     }
 }
 
+/*
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs += listOf(
@@ -43,4 +43,4 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         )
         jvmTarget = "11"
     }
-}
+}*/

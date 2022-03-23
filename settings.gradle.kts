@@ -29,3 +29,5 @@ pluginManagement {
 
 include(":yebi-core")
 include(":features:yebi-live")
+
+include(":engine:yebi-engine-web")
