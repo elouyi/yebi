@@ -1,6 +1,6 @@
 object Versions {
 
-    const val yebi = "0.0.0-c"
+    const val yebi = "0.0.0-d"
 
     const val kotlinCompiler = "1.6.10"
     const val kotlinxSerialization = "1.3.1"

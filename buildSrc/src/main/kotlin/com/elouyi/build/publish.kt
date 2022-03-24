@@ -35,11 +35,12 @@ val org.gradle.api.Project.`publishing`: org.gradle.api.publish.PublishingExtens
 
 fun Project.mavenPublish() {
 
-    val ossName: String
-    val ossPass: String
-    val keyId: String
-    val keyPass: String
-    val keySec: String
+    var ossName: String = ""
+    var ossPass: String = ""
+    var keyId: String = ""
+    var keyPass: String = ""
+    var keySec: String = ""
+    var t: Throwable? = null
 
     try {
         ossName = System.getenv("OSS_NAME") ?: error("")
@@ -47,9 +48,10 @@ fun Project.mavenPublish() {
         keyId = System.getenv("KEY_ID") ?: error("")
         keyPass = System.getenv("KEY_PASS") ?: error("")
         keySec = decryptBase64(System.getenv("KEY_SEC") ?: error(""))
-    } catch (_: Throwable) {
+    } catch (throwable: Throwable) {
         println("no publish")
-        return
+        t = throwable
+        t.printStackTrace()
     }
     afterEvaluate {
 
@@ -102,7 +104,9 @@ fun Project.mavenPublish() {
                     artifact(doc.get())
                 }
             }
-
+            if (t !== null) {
+                return@publishing
+            }
             repositories {
                 maven {
                     credentials {
