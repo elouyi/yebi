@@ -34,6 +34,23 @@ val org.gradle.api.Project.`publishing`: org.gradle.api.publish.PublishingExtens
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("publishing") as org.gradle.api.publish.PublishingExtension
 
 fun Project.mavenPublish() {
+
+    val ossName: String
+    val ossPass: String
+    val keyId: String
+    val keyPass: String
+    val keySec: String
+
+    try {
+        ossName = System.getenv("OSS_NAME") ?: error("")
+        ossPass = System.getenv("OSS_PASS") ?: error("")
+        keyId = System.getenv("KEY_ID") ?: error("")
+        keyPass = System.getenv("KEY_PASS") ?: error("")
+        keySec = decryptBase64(System.getenv("KEY_SEC") ?: error(""))
+    } catch (_: Throwable) {
+        println("no publish")
+        return
+    }
     afterEvaluate {
 
         publishing {
@@ -55,12 +72,21 @@ fun Project.mavenPublish() {
                     pom {
                         scm {
                             url.set("https://github.com/elouyi/yebi")
+                            connection.set("scm:https://github.com/elouyi/yebi.git")
+                            developerConnection.set("scm:git://github.com/elouyi/yebi.git")
                         }
                         licenses {
-
+                            license {
+                                name.set("MIT License")
+                                url.set("https://github.com/elouyi/yebi/blob/dev/LICENSE")
+                            }
                         }
                         developers {
-
+                            developer {
+                                id.set("elouyi")
+                                name.set("ywnkm")
+                                email.set("yw@elouyi.com")
+                            }
                         }
                     }
 
@@ -74,9 +100,28 @@ fun Project.mavenPublish() {
 
                     artifact(sourcesJar.get())
                     artifact(doc.get())
-
                 }
             }
+
+            repositories {
+                maven {
+                    credentials {
+                        name = "OSSRH"
+                        setUrl("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+                        username = ossName
+                        password = ossPass
+                    }
+                }
+            }
+        }
+
+        this@mavenPublish.setProperty("signing.keyId", keyId)
+        this@mavenPublish.setProperty("signing.password", keyPass)
+        this@mavenPublish.setProperty("signing.secretKeyRingFile", keySec)
+        this@mavenPublish.setProperty("ossrhUsername", ossName)
+        this@mavenPublish.setProperty("ossrhPassword", ossPass)
+        signing {
+            sign(publishing.publications["mavenJava"])
         }
     }
 }

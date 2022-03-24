@@ -1,6 +1,7 @@
 package com.elouyi.yebi.engine
 
 import com.elouyi.yebi.YebiBot
+import io.ktor.client.*
 import io.ktor.client.request.*
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -8,11 +9,13 @@ import kotlinx.coroutines.SupervisorJob
 import java.io.Closeable
 import kotlin.coroutines.CoroutineContext
 
-public interface YebiEngine : CoroutineScope, Closeable {
+public sealed interface YebiEngine : CoroutineScope, Closeable {
 
     public val uid: Long
 
     public val config: YebiEngineConfig
+
+    public val client: HttpClient
 
     public fun install(bot: YebiBot)
 
@@ -20,18 +23,15 @@ public interface YebiEngine : CoroutineScope, Closeable {
 
     public fun HttpRequestBuilder.doSomething()
 
-    /**
-     * no args
-     */
-    public fun getUrl(id: Int): String
+    public fun wrapURL(url: String, vararg params: Pair<String, String>): String
 }
 
 public abstract class YebiEngineBase(private val engineName: String) : YebiEngine {
 
     override val coroutineContext: CoroutineContext = SupervisorJob() + CoroutineName(engineName)
 
-    override fun getUrl(id: Int): String {
-        TODO("Not yet implemented")
+    override fun wrapURL(url: String, vararg params: Pair<String, String>): String {
+        error("URL $url is not supported in engine $engineName")
     }
 
     override fun toString(): String {

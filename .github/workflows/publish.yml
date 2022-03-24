@@ -1,0 +1,28 @@
+name: Publish to Maven Central
+on:
+  push:
+    branches:
+      - release
+      - dev
+  pull_request:
+    branches:
+      - release
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Publish package
+        run: gradle publish
+        env:
+          OSS_NAME: ${{ secret.OSS_NAME }}
+          OSS_PASS: ${{ secret.OSS_PASS }}
+          KEY_ID: ${{ secret.KEY_ID }}
+          KEY_PASS: ${{ secret.KEY_PASS }}
+          KEY_SEC: ${{ secret.KEY_SEC }}
