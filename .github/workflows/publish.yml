@@ -21,8 +21,8 @@ jobs:
       - name: Publish package
         run: gradle publish
         env:
-          OSS_NAME: ${{ secret.OSS_NAME }}
-          OSS_PASS: ${{ secret.OSS_PASS }}
-          KEY_ID: ${{ secret.KEY_ID }}
-          KEY_PASS: ${{ secret.KEY_PASS }}
-          KEY_SEC: ${{ secret.KEY_SEC }}
+          OSS_NAME: ${{ secrets.OSS_NAME }}
+          OSS_PASS: ${{ secrets.OSS_PASS }}
+          KEY_ID: ${{ secrets.KEY_ID }}
+          KEY_PASS: ${{ secrets.KEY_PASS }}
+          KEY_SEC: ${{ secrets.KEY_SEC }}
