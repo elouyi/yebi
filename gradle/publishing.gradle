@@ -1,3 +1,6 @@
+import com.elouyi.build.PublishKt
 
 apply plugin: "maven-publish"
 apply plugin: "signing"
+
+PublishKt.mavenPublish(project)

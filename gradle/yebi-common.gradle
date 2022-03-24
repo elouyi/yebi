@@ -24,8 +24,8 @@ compileKotlin {
         jvmTarget = "11"
         freeCompilerArgs += [
                 "-Xopt-in=kotlin.RequiresOptIn",
-                "-Xexplicit-api=strict"
+                "-Xexplicit-api=strict",
+                // "-Xcontext-receivers"
         ]
     }
 }
-

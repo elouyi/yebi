@@ -1,3 +1,5 @@
+@file:Suppress("unused_variable")
+
 import com.elouyi.build.*
 
 plugins {
@@ -13,8 +15,6 @@ kotlin {
 
         all {
             languageSettings {
-                optIn("kotlin.RequiresOptIn")
-                optIn("kotlin.OptIn")
                 optIn("kotlin.contracts.ExperimentalContracts")
             }
         }
@@ -35,15 +35,3 @@ kotlin {
         }
     }
 }
-
-mavenPublish()
-
-/*
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs += listOf(
-            "-Xopt-in=kotlin.RequiresOptIn"
-        )
-        jvmTarget = "11"
-    }
-}*/

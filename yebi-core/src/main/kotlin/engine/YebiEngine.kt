@@ -19,11 +19,20 @@ public interface YebiEngine : CoroutineScope, Closeable {
     public val isLogin: Boolean
 
     public fun HttpRequestBuilder.doSomething()
+
+    /**
+     * no args
+     */
+    public fun getUrl(id: Int): String
 }
 
 public abstract class YebiEngineBase(private val engineName: String) : YebiEngine {
 
     override val coroutineContext: CoroutineContext = SupervisorJob() + CoroutineName(engineName)
+
+    override fun getUrl(id: Int): String {
+        TODO("Not yet implemented")
+    }
 
     override fun toString(): String {
         return engineName

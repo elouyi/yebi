@@ -7,6 +7,8 @@ public class WebEngineConfig : YebiEngineConfig {
 
     internal var cookie = UserCookie.Empty
 
+    internal var account = "" to ""
+
     public fun withUserCookie(cookie: UserCookie) {
         this.cookie = cookie
     }
@@ -14,5 +16,9 @@ public class WebEngineConfig : YebiEngineConfig {
     @OptIn(YebiInternalAPI::class)
     public fun withUserCookie(cookieStr: String) {
         this.cookie = cookieStr.getUserCookie()
+    }
+
+    override fun withAccount(account: String, pass: String) {
+        this.account = account to pass
     }
 }

@@ -1,4 +1,3 @@
-import com.elouyi.build.mavenPublish
 
 plugins {
     kotlin("jvm")
@@ -17,4 +16,3 @@ kotlin {
     }
 }
 
-mavenPublish()
