@@ -28,6 +28,6 @@ pluginManagement {
 }
 
 include(":yebi-core")
-include(":features:yebi-live")
+include(":features:yebi-feature-live")
 
 include(":engine:yebi-engine-web")

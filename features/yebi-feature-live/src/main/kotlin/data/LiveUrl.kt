@@ -1,4 +1,6 @@
-package com.elouyi.yebi.data
+package com.elouyi.yebi.feature.live.data
+
+import com.elouyi.yebi.data.BiliUrl
 
 public interface LiveUrl : BiliUrl {
 

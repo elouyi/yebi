@@ -1,6 +1,8 @@
-package com.elouyi.yebi.feature
+package com.elouyi.yebi.feature.live.feature
 
 import com.elouyi.yebi.YebiBot
+import com.elouyi.yebi.feature.AttributeKey
+import com.elouyi.yebi.feature.YebiFeature
 
 public class Live internal constructor(internal val config: Config) {
 

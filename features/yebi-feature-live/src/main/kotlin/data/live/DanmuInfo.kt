@@ -1,4 +1,4 @@
-package com.elouyi.yebi.data.live
+package com.elouyi.yebi.feature.live.data.live
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

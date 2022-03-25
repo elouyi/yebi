@@ -51,7 +51,6 @@ fun Project.mavenPublish() {
     } catch (throwable: Throwable) {
         println("no publish")
         t = throwable
-        t.printStackTrace()
     }
     afterEvaluate {
 
