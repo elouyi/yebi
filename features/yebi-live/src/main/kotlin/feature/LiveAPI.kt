@@ -38,10 +38,12 @@ public abstract class LiveAPI {
 
     public companion object {
 
-        private var instance: LiveAPI? = null
+        @YebiExperimental
+        private val instances = mutableMapOf<YebiBot, LiveAPI>()
 
+        @OptIn(YebiExperimental::class)
         internal operator fun get(scope: YebiBot): LiveAPI {
-            return instance ?: LiveAPIImpl(scope).also { instance = it }
+            return instances[scope] ?: LiveAPIImpl(scope).also { instances[scope] = it }
         }
     }
 }

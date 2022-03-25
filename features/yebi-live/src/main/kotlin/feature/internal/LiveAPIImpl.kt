@@ -21,7 +21,7 @@ internal class LiveAPIImpl(private val scope: YebiBot) : LiveAPI() {
         clazz: KClass<E>,
         block: suspend E.() -> Unit
     ): Cancelable {
-        TODO("Not yet implemented")
+        throw throw throw TODO("Not yet implemented")
     }
 
     override suspend fun danmuInfo(id: Int): BiliResponse<DanmuInfo> {
