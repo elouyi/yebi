@@ -1,6 +1,7 @@
 package com.elouyi.yebi.engine
 
 import com.elouyi.yebi.YebiBot
+import com.elouyi.yebi.utils.YebiInternalAPI
 import io.ktor.client.*
 import io.ktor.client.request.*
 import kotlinx.coroutines.CoroutineName
@@ -17,6 +18,7 @@ public sealed interface YebiEngine : CoroutineScope, Closeable {
 
     public val client: HttpClient
 
+    @YebiInternalAPI
     public fun install(bot: YebiBot)
 
     public val isLogin: Boolean
@@ -24,6 +26,8 @@ public sealed interface YebiEngine : CoroutineScope, Closeable {
     public fun HttpRequestBuilder.doSomething()
 
     public fun wrapURL(url: String, vararg params: Pair<String, String>): String
+
+    override fun close()
 }
 
 public abstract class YebiEngineBase(private val engineName: String) : YebiEngine {
@@ -35,6 +39,6 @@ public abstract class YebiEngineBase(private val engineName: String) : YebiEngin
     }
 
     override fun toString(): String {
-        return engineName
+        return "YebiEngine: $engineName"
     }
 }

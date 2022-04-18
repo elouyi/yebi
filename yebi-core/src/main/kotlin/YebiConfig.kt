@@ -3,6 +3,7 @@ package com.elouyi.yebi
 import com.elouyi.yebi.engine.YebiEngineConfig
 import com.elouyi.yebi.feature.AttributeKey
 import com.elouyi.yebi.feature.YebiFeature
+import com.elouyi.yebi.utils.YebiInternalAPI
 
 public class YebiConfig<T : YebiEngineConfig> {
 
@@ -40,6 +41,7 @@ public class YebiConfig<T : YebiEngineConfig> {
         }
     }
 
+    @YebiInternalAPI
     public fun install(yebiBot: YebiBot) {
         features.values.forEach { yebiBot.apply(it) }
     }

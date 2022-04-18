@@ -4,6 +4,7 @@ import com.elouyi.yebi.YebiBot
 import com.elouyi.yebi.engine.YebiEngineBase
 import com.elouyi.yebi.engine.web.WebEngineConfig
 import com.elouyi.yebi.engine.web.withUserCookie
+import com.elouyi.yebi.utils.YebiInternalAPI
 import com.elouyi.yebi.utils.newClient
 import io.ktor.client.*
 import io.ktor.client.request.*
@@ -21,6 +22,7 @@ internal class YebiWebEngine(
     override val uid: Long
         get() = config.cookie.dedeUserId
 
+    @OptIn(YebiInternalAPI::class)
     override fun install(bot: YebiBot) {
 
     }

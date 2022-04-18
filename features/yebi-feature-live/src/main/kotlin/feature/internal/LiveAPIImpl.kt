@@ -12,6 +12,7 @@ import io.ktor.client.request.*
 import kotlin.coroutines.CoroutineContext
 import kotlin.reflect.KClass
 
+/*
 internal class LiveAPIImpl(private val scope: YebiBot) : LiveAPI() {
 
     @YebiExperimental
@@ -31,3 +32,4 @@ internal class LiveAPIImpl(private val scope: YebiBot) : LiveAPI() {
         }
     }
 }
+*/

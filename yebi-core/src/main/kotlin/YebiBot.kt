@@ -4,6 +4,7 @@ import com.elouyi.yebi.engine.YebiEngine
 import com.elouyi.yebi.engine.YebiEngineConfig
 import com.elouyi.yebi.engine.YebiEngineFactory
 import com.elouyi.yebi.feature.Attributes
+import com.elouyi.yebi.utils.YebiInternalAPI
 
 /**
  * 构造一个 [YebiBot] 实例
@@ -12,7 +13,7 @@ import com.elouyi.yebi.feature.Attributes
  * ```kotlin
  * val yebi = Yebi(YWE) {  // 需要 yebi-engine-web 依赖
  *     // 通用配置
- *     install(Live) {  // 需要 yebi-live 依赖
+ *     install(Live) {  // 需要 yebi-feature-live 依赖
  *
  *     }
  *     engine {
@@ -23,7 +24,7 @@ import com.elouyi.yebi.feature.Attributes
  * @param engineFactory 引擎工厂，通常是一个 Object
  * @param block 配置
  */
-public fun <T : YebiEngineConfig> YebiBot(
+public inline fun <T : YebiEngineConfig> YebiBot(
     engineFactory: YebiEngineFactory<T>,
     block: YebiConfig<T>.() -> Unit = {}
 ): YebiBot {
@@ -31,6 +32,7 @@ public fun <T : YebiEngineConfig> YebiBot(
     return YebiBot(engineFactory.create(), config)
 }
 
+@OptIn(YebiInternalAPI::class)
 public class YebiBot(
     public val engine: YebiEngine,
     internal val config: YebiConfig<out YebiEngineConfig> = YebiConfig()
