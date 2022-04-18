@@ -31,3 +31,6 @@ include(":yebi-core")
 include(":features:yebi-feature-live")
 
 include(":engine:yebi-engine-web")
+include("features:yebi-feature-user")
+findProject(":features:yebi-feature-user")?.name = "yebi-feature-user"
+include("yebi-all")

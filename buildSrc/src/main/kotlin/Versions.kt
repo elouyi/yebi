@@ -1,5 +1,5 @@
 object Versions {
-    const val yebi = "0.0.0-d"
+    const val yebi = "0.0.0-e"
 
     const val kotlinCompiler = "1.6.10"
     const val kotlinxSerialization = "1.3.1"
@@ -9,4 +9,5 @@ object Versions {
     const val ktor = "1.6.5"
 
     const val logging = "2.1.20"
+    const val logback = "1.2.6"
 }

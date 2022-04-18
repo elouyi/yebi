@@ -19,3 +19,4 @@ gradle-app.setting
 /engine/*/build/
 
 /yebi-core/build/
+/yebi-all/build

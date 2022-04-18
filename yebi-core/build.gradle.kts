@@ -30,7 +30,8 @@ kotlin {
                 api("io.ktor:ktor-client-core:${Versions.ktor}")
                 api("io.ktor:ktor-client-cio:${Versions.ktor}")
                 api("io.ktor:ktor-client-serialization:${Versions.ktor}")
-                // api("io.github.microutils:kotlin-logging:${Versions.logging}")
+                api("io.github.microutils:kotlin-logging:${Versions.logging}")
+                api("ch.qos.logback:logback-classic:${Versions.logback}")
             }
         }
     }

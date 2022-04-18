@@ -5,6 +5,7 @@ import com.elouyi.yebi.engine.YebiEngineConfig
 import com.elouyi.yebi.engine.YebiEngineFactory
 import com.elouyi.yebi.feature.Attributes
 import com.elouyi.yebi.utils.YebiInternalAPI
+import java.io.Closeable
 
 /**
  * 构造一个 [YebiBot] 实例
@@ -36,10 +37,9 @@ public inline fun <T : YebiEngineConfig> YebiBot(
 public class YebiBot(
     public val engine: YebiEngine,
     internal val config: YebiConfig<out YebiEngineConfig> = YebiConfig()
-) {
+) : Closeable by engine {
 
     public val attributes: Attributes = Attributes()
-
 
     init {
         config.install(this)
