@@ -6,8 +6,8 @@ plugins {
 apply(from = rootProject.file("gradle/yebi-common.gradle"))
 
 dependencies {
-    implementation(project(":yebi-core"))
-    implementation(project(":engine:yebi-engine-web"))
-    implementation(project(":features:yebi-feature-live"))
-    implementation(project(":features:yebi-feature-user"))
+    api(project(":yebi-core"))
+    api(project(":engine:yebi-engine-web"))
+    api(project(":features:yebi-feature-live"))
+    api(project(":features:yebi-feature-user"))
 }

@@ -43,7 +43,9 @@ public class YebiConfig<T : YebiEngineConfig> {
 
     @YebiInternalAPI
     public fun install(yebiBot: YebiBot) {
-        features.values.forEach { yebiBot.apply(it) }
+        @Suppress("Unchecked_Cast")
+        (yebiBot.engine.config as T).engineConfig()
+        features.values.forEach { it(yebiBot) }
     }
 
     override fun toString(): String {

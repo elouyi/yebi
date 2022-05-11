@@ -6,6 +6,7 @@ import io.ktor.client.*
 import io.ktor.client.request.*
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import mu.KLogger
 import mu.KotlinLogging
@@ -36,7 +37,7 @@ public sealed interface YebiEngine : CoroutineScope, Closeable {
 
 public abstract class YebiEngineBase(private val engineName: String) : YebiEngine {
 
-    override val coroutineContext: CoroutineContext = SupervisorJob() + CoroutineName(engineName)
+    override val coroutineContext: CoroutineContext = SupervisorJob() + CoroutineName(engineName) + Dispatchers.IO
 
     final override val logger: KLogger = KotlinLogging.logger(engineName)
 

@@ -1,4 +1,4 @@
-package com.elouyi.yebi.feature.live.feature
+package com.elouyi.yebi.feature.live
 
 import com.elouyi.yebi.YebiBot
 import com.elouyi.yebi.feature.AttributeKey
@@ -25,7 +25,7 @@ public class Live internal constructor(internal val config: Config) {
 
         override fun install(feature: Live, scope: YebiBot) {
             feature.scope = scope
-            feature.liveAPI = LiveAPI[scope]
+            feature.liveAPI = LiveAPI(scope)
         }
     }
 }

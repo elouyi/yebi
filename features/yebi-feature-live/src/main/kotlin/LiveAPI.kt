@@ -1,4 +1,4 @@
-package com.elouyi.yebi.feature.live.feature
+package com.elouyi.yebi.feature.live
 
 import com.elouyi.yebi.YebiBot
 import com.elouyi.yebi.data.BiliResponse
@@ -11,9 +11,9 @@ import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.reflect.KClass
 
 public val YebiBot.liveApi: LiveAPI
-    get() = attributes[Live.key].liveAPI
+    get() = attributes[Live].liveAPI
 
-public class LiveAPI private constructor(
+public class LiveAPI internal constructor(
     private val scope: YebiBot
 ){
 
@@ -37,15 +37,4 @@ public class LiveAPI private constructor(
 
     public suspend fun danmuInfo(id: Int): BiliResponse<DanmuInfo> = TODO()
 
-    public companion object {
-
-        @YebiExperimental
-        private val instances = mutableMapOf<YebiBot, LiveAPI>()
-
-        @OptIn(YebiExperimental::class)
-        @Synchronized
-        internal operator fun get(scope: YebiBot): LiveAPI {
-            return instances[scope] ?: LiveAPI(scope).also { instances[scope] = it }
-        }
-    }
 }

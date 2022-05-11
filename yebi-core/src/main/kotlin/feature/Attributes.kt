@@ -11,6 +11,8 @@ public fun Attributes(): Attributes = AttributesImpl()
 
 public interface Attributes {
 
+    public operator fun <T : Any> get(feature: YebiFeature<*, T>): T = get(feature.key)
+
     public operator fun <T : Any> get(key: AttributeKey<T>): T =
         getOrNull(key) ?: throw IllegalStateException("key ${key.name} not found,yebi may need to install(${key.name})")
 
@@ -20,7 +22,7 @@ public interface Attributes {
 
     public operator fun <T : Any> set(key: AttributeKey<T>, value: T): Unit = put(key, value)
 
-    public  fun <T : Any> put(key: AttributeKey<T>, value: T)
+    public fun <T : Any> put(key: AttributeKey<T>, value: T)
 
     public fun <T : Any> remove(key: AttributeKey<T>)
 

@@ -64,3 +64,10 @@ public fun HttpRequestBuilder.withUserCookie(cookie: UserCookie) {
     cookie("DedeUserID__ckMd5",cookie.dedeUserIDCkMd5)
     cookie("bili_jct",cookie.bili_jct)
 }
+
+public fun HttpRequestBuilder.withUserCookieString(cookieString: String) {
+    cookieString.split(";").forEach {
+        val (key, value) = it.substringBefore("=") to it.substringAfter("=")
+        cookie(key, value)
+    }
+}

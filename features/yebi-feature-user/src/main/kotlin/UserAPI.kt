@@ -6,7 +6,7 @@ import com.elouyi.yebi.feature.YebiAPIBase
 import com.elouyi.yebi.feature.user.data.AccountInfo
 
 public val YebiBot.userAPI: UserAPI
-    get() = attributes[UserFeature.key].userAPI
+    get() = attributes[UserFeature].userAPI
 
 public abstract class UserAPI: YebiAPIBase {
 

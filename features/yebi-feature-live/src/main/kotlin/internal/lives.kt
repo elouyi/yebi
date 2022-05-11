@@ -1,4 +1,4 @@
-package com.elouyi.yebi.feature.live.feature.internal
+package com.elouyi.yebi.feature.live.internal
 
 import com.elouyi.yebi.feature.live.data.live.*
 import com.elouyi.yebi.feature.live.data.live.LiveCMD

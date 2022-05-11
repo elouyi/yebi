@@ -25,7 +25,7 @@ compileKotlin {
         freeCompilerArgs += [
                 "-Xopt-in=kotlin.RequiresOptIn",
                 "-Xexplicit-api=strict",
-                // "-Xcontext-receivers"
+                "-Xcontext-receivers"
         ]
     }
 }
