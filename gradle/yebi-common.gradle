@@ -3,7 +3,7 @@
 def versions = Versions.INSTANCE
 
 apply plugin: "org.jetbrains.kotlin.plugin.serialization"
-apply plugin: "org.jetbrains.kotlin.jvm"
+// apply plugin: "org.jetbrains.kotlin.jvm"
 
 kotlin {
     explicitApi()  // idea bug
@@ -19,13 +19,3 @@ kotlin {
     }
 }
 
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "11"
-        freeCompilerArgs += [
-                "-Xopt-in=kotlin.RequiresOptIn",
-                "-Xexplicit-api=strict",
-                "-Xcontext-receivers"
-        ]
-    }
-}

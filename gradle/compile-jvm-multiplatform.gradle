@@ -1,0 +1,9 @@
+def versions = Versions.INSTANCE
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+kotlin {
+    jvm {}
+
+}

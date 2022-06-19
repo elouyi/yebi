@@ -1,0 +1,17 @@
+def versions = Versions.INSTANCE
+
+apply from: rootProject.file("gradle/compile-native-multiplatform.gradle")
+apply from: rootProject.file("gradle/compile-jvm-multiplatform.gradle")
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlinCompiler}"
+            api "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlinCompiler}"
+        }
+
+        commonTest.dependencies {
+            api "org.jetbrains.kotlin:kotlin-test:${versions.kotlinCompiler}"
+        }
+    }
+}
