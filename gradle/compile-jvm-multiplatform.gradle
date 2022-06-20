@@ -4,6 +4,12 @@ sourceCompatibility = 11
 targetCompatibility = 11
 
 kotlin {
-    jvm {}
+    jvm {
+        sourceSets {
+            jvmMain.dependencies {
+                api "io.ktor:ktor-client-cio:${versions.ktor}"
+            }
+        }
+    }
 
 }

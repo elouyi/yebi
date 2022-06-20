@@ -1,0 +1,14 @@
+def versions = Versions.INSTANCE
+
+kotlin {
+    js {
+        nodejs()
+        binaries.executable()
+        sourceSets {
+            jsMain.dependencies {
+                api "io.ktor:ktor-client-js:${versions.ktor}"
+            }
+        }
+    }
+
+}

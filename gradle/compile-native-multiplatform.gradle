@@ -1,3 +1,5 @@
+def versions = Versions.INSTANCE
+
 project.ext.nativeMainSets = []
 project.ext.nativeTestSets = []
 
@@ -34,5 +36,9 @@ kotlin {
 
         configure(nativeMainSets) { dependsOn nativeMain }
         configure(nativeTestSets) { dependsOn nativeTest }
+
+        nativeMain.dependencies {
+            api "io.ktor:ktor-client-curl:${versions.ktor}"
+        }
     }
 }

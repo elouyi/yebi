@@ -7,6 +7,6 @@ object Versions {
     const val kotlinxAtomicfu = "0.17.1"
     const val ktor = "2.0.0-beta-1"
 
-    const val logging = "2.1.20"
+    const val logging = "2.1.23"
     const val logback = "1.2.6"
 }

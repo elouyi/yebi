@@ -1,21 +1,16 @@
-// import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
-def versions = Versions.INSTANCE
-
 apply plugin: "org.jetbrains.kotlin.plugin.serialization"
 // apply plugin: "org.jetbrains.kotlin.jvm"
 
 kotlin {
-    explicitApi()  // idea bug
+    explicitApi()
 
     sourceSets {
-
         all {
             languageSettings {
-                // useless
                 optIn "kotlin.contracts.ExperimentalContracts"
+                optIn "com.elouyi.yebi.util.YebiInternalAPI"
+                // enableLanguageFeature("ContextReceivers")
             }
         }
     }
 }
-

@@ -2,12 +2,16 @@ def versions = Versions.INSTANCE
 
 apply from: rootProject.file("gradle/compile-native-multiplatform.gradle")
 apply from: rootProject.file("gradle/compile-jvm-multiplatform.gradle")
+apply from: rootProject.file("gradle/compile-js-multiplatform.gradle")
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
             api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlinCompiler}"
             api "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlinCompiler}"
+            api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinxCoroutines}"
+            api "org.jetbrains.kotlinx:kotlinx-serialization-json:${versions.kotlinxSerialization}"
+            api "io.ktor:ktor-client-core:${versions.ktor}"
         }
 
         commonTest.dependencies {
