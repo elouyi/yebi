@@ -10,13 +10,15 @@ on:
 jobs:
   publish:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        sys:
+          - mingw64
     steps:
       - uses: actions/checkout@v2
-      - name: Set up MinGW
-        uses: egor-tensin/setup-mingw@v2
-        with:
-          platform: x64
-          
+
+      - name: Set up mysys2
+        uses: msys2/setup-msys2@v2
       - name: Install curl
         run: pacman -S mingw-w64-x86_64-curl
 
