@@ -22,7 +22,7 @@ jobs:
       - name: Install curl
         shell: msys2 {0}
         run: |
-          pacman -S mingw-w64-x86_64-curl
+          pacman -S mingw-w64-x86_64-curl --noconfirm 
 
       - name: Set up Java
         uses: actions/setup-java@v2
