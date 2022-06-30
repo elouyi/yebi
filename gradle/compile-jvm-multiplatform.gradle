@@ -8,6 +8,7 @@ kotlin {
         sourceSets {
             jvmMain.dependencies {
                 api "io.ktor:ktor-client-cio:${versions.ktor}"
+                api "ch.qos.logback:logback-classic:${Versions.logback}"
             }
         }
     }

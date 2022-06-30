@@ -9,7 +9,7 @@ public expect val platformUtil: PlatformUtil
  */
 public interface PlatformUtil {
 
-    public fun newHttpClient(block: HttpClientConfig<*>.() -> Unit): HttpClient
+    public fun newHttpClient(block: HttpClientConfig<*>.() -> Unit = {}): HttpClient
 
     public fun currentTimeMillis(): Long
 
