@@ -20,7 +20,7 @@ jobs:
       - name: Set up mysys2
         uses: msys2/setup-msys2@v2
       - name: Install curl
-        shell: mysys2 {0}
+        shell: msys2 {0}
         run: |
           pacman -S mingw-w64-x86_64-curl
 
