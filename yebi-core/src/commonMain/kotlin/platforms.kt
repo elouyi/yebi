@@ -4,22 +4,25 @@ import io.ktor.client.*
 
 public expect val platformUtil: PlatformUtil
 
+/**
+ * 平台工具类
+ */
 public interface PlatformUtil {
 
-    public fun newHttpClient(): HttpClient
+    public fun newHttpClient(block: HttpClientConfig<*>.() -> Unit): HttpClient
 
     public fun currentTimeMillis(): Long
 
-    public val isJvm: Boolean
+    public val isJvm: Boolean get() = false
 
-    public val jsJs: Boolean
+    public val jsJs: Boolean get() = false
 
-    public val isNative: Boolean
+    public val isNative: Boolean get() = false
 
-    public val isNativeWindows: Boolean
+    public val isNativeWindows: Boolean get() = false
 
-    public val isNativeLinux: Boolean
+    public val isNativeLinux: Boolean get() = false
 
-    public val isNativeMacOS: Boolean
+    public val isNativeMacOS: Boolean get() = false
 }
 

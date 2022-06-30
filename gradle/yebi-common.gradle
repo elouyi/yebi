@@ -1,5 +1,6 @@
 apply plugin: "org.jetbrains.kotlin.plugin.serialization"
 // apply plugin: "org.jetbrains.kotlin.jvm"
+apply plugin: "kotlinx-atomicfu"
 
 kotlin {
     explicitApi()
@@ -9,6 +10,7 @@ kotlin {
             languageSettings {
                 optIn "kotlin.contracts.ExperimentalContracts"
                 optIn "com.elouyi.yebi.util.YebiInternalAPI"
+                optIn "com.elouyi.yebi.util.YebiExperimentalAPI"
                 // enableLanguageFeature("ContextReceivers")
             }
         }

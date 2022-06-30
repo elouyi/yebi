@@ -21,3 +21,5 @@ gradle-app.setting
 /yebi-core/build/
 /yebi-core/out/
 /yebi-all/build
+
+/local.properties

@@ -1,10 +1,10 @@
 package com.elouyi.yebi.event
 
 import com.elouyi.yebi.util.YebiExperimentalAPI
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
-import kotlin.coroutines.cancellation.CancellationException
 
 public typealias EventConsumer<R, T> = suspend R.(T) -> Unit
 

@@ -1,13 +1,16 @@
 package com.elouyi.yebi
 
 import io.ktor.client.*
+import io.ktor.client.engine.cio.*
 
 public actual val platformUtil: PlatformUtil
     get() = JVMPlatform
 
 private object JVMPlatform : PlatformUtil {
-    override fun newHttpClient(): HttpClient {
-        TODO()
+    override fun newHttpClient(block: HttpClientConfig<*>.() -> Unit): HttpClient {
+        return HttpClient(CIO) {
+            block()
+        }
     }
 
     override fun currentTimeMillis(): Long = System.currentTimeMillis()

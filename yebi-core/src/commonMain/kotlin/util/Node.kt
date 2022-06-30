@@ -122,3 +122,21 @@ public fun <T> Node<T>.reverse(): Node<T> = when(this) {
 public fun <T> Node<T>.asSequence(): Sequence<T> = Sequence(::iterator).constrainOnce()
 
 public fun <T> Node<T>.asIterable(): Iterable<T> = Iterable(::iterator)
+
+public class NodeBuilder<T> {
+    private var init: Node<T> = Node.Nil
+
+    public fun append(node: Node<T>) {
+        init = Node.Cons<T>(node, init)
+    }
+
+    public fun append(value: T) {
+        init = Node.Cons<T>(value, init)
+    }
+    public fun build(): Node<T> = init
+
+}
+
+public inline fun <T> buildNode(block: NodeBuilder<T>.() -> Unit): Node<T> {
+    return NodeBuilder<T>().also(block).build()
+}

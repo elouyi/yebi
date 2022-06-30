@@ -39,6 +39,7 @@ kotlin {
 
         nativeMain.dependencies {
             api "io.ktor:ktor-client-curl:${versions.ktor}"
+            api "io.ktor:ktor-server-cio:${versions.ktor}"
         }
     }
 }
