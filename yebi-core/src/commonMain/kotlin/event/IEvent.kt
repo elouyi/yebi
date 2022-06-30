@@ -47,7 +47,7 @@ public interface IEvent<T, out R : Any?, out Listener : EventListener<T>> {
     public fun onComplete(listener: @UnsafeVariance Listener)
 }
 
-private inline fun <T, R> (suspend (T) -> Unit).wrap(): EventConsumer<R, T> = { invoke(it) }
+private fun <T, R> (suspend (T) -> Unit).wrap(): EventConsumer<R, T> = { invoke(it) }
 
 @OptIn(YebiExperimentalAPI::class)
 public fun <T, Listener : EventListener<T>> IEvent<T, *, Listener>.subscribe(
