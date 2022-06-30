@@ -16,7 +16,10 @@ jobs:
         uses: egor-tensin/setup-mingw@v2
         with:
           platform: x64
+          
+      - name: Install curl
         run: pacman -S mingw-w64-x86_64-curl
+
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
